@@ -76,9 +76,7 @@ public class AppServer {
             			}
                 		out.print(outputLine);
                         br.close();
-                	}/*else if() {
-                		
-                	}*/
+                	}
                 }
                 if (!in.ready()) {
                     break;
