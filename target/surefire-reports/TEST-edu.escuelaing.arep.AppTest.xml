@@ -5,7 +5,7 @@
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_201\jre\bin"/>
     <property name="java.vm.version" value="25.201-b09"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="C:\Users\2128728\Downloads\Primer-Proyecto"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\2128728\Downloads\AREP-Proyecto-1Tercio"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Users\2128728\Downloads\Primer-Proyecto"/>
+    <property name="user.dir" value="C:\Users\2128728\Downloads\AREP-Proyecto-1Tercio"/>
     <property name="java.runtime.version" value="1.8.0_201-b09"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_201\jre\lib\endorsed"/>
@@ -29,7 +29,7 @@
     <property name="os.name" value="Windows 10"/>
     <property name="classworlds.conf" value="C:\Program Files\apache-maven-3.6.0\bin\..\bin\m2.conf"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_201\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Haskell\bin;C:\Program Files\Haskell Platform\8.6.3\lib\extralibs\bin;C:\Program Files\Haskell Platform\8.6.3\bin;C:\Program Files\Java\jre1.8.0_201\bin;C:\Program Files\Java\jdk1.8.0_201\bin;C:\Program Files (x86)\Python37-32\Scripts\;C:\Program Files (x86)\Python37-32\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\PuTTY\;C:\Program Files (x86)\WinSCP\;C:\Program Files\Git\cmd;C:\Program Files\Haskell Platform\8.6.3\mingw\bin;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\swipl\bin;&quot;C:\ProgramData\Oracle\Java\javapath;&quot;;C:\Android;C:\Android\tools;C:\Android\platform_tools;C:\Program Files\apache-maven-3.6.0\bin;C:\Program Files\Apache Software Foundation\Apache Maven 3.6.0\bin;C:\Program Files\Java\jdk1.8.0_201\bin;C:\Program Files\Java\jre1.8.0_201\bin;C:\Program Files\dotnet\;C:\Program Files (x86)\Wolfram Research\WolframScript\;C:\Program Files\heroku\bin;C:\Users\2128728\AppData\Local\Microsoft\WindowsApps;;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_201\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Haskell\bin;C:\Program Files\Haskell Platform\8.6.3\lib\extralibs\bin;C:\Program Files\Haskell Platform\8.6.3\bin;C:\Program Files\Java\jre1.8.0_201\bin;C:\Program Files\Java\jdk1.8.0_201\bin;C:\Program Files (x86)\Python37-32\Scripts\;C:\Program Files (x86)\Python37-32\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\PuTTY\;C:\Program Files (x86)\WinSCP\;C:\Program Files\Git\cmd;C:\Program Files\Haskell Platform\8.6.3\mingw\bin;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\swipl\bin;&quot;C:\ProgramData\Oracle\Java\javapath;&quot;;C:\Android;C:\Android\tools;C:\Android\platform_tools;C:\Program Files\apache-maven-3.6.0\bin;C:\Program Files\Apache Software Foundation\Apache Maven 3.6.0\bin;C:\Program Files\Java\jdk1.8.0_201\bin;C:\Program Files\Java\jre1.8.0_201\bin;C:\Program Files\heroku\bin;C:\Users\2128728\AppData\Local\Microsoft\WindowsApps;;."/>
     <property name="maven.conf" value="C:\Program Files\apache-maven-3.6.0\bin\../conf"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
