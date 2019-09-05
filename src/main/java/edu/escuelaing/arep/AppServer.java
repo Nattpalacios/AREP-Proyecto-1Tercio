@@ -1,6 +1,9 @@
 package edu.escuelaing.arep;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -11,6 +14,8 @@ import java.lang.reflect.Method;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
+
+import javax.imageio.ImageIO;
 
 public class AppServer {
 	
@@ -63,9 +68,25 @@ public class AppServer {
 	                            +"</h1>\n"
 	                            + "</body>\n"
 	                            + "</html>\n";
-                	}else if(inputLine.contains("/RecursosWeb/")) {
+                	}else if(inputLine.contains("/imagenes/")) {
                 		String path = inputLine.split(" ")[1].split("/")[2];
-                		String direccion = System.getProperty("user.dir") + "/RecursosWeb/" + path;
+                		String formatoFile = path.substring(path.indexOf(".") + 1);
+                		String direccion = System.getProperty("user.dir") + "/imagenes/" + path;
+                    	BufferedImage bI = ImageIO.read(new File(direccion));
+                    	ByteArrayOutputStream byteArrayOutput = new ByteArrayOutputStream();
+                    	ImageIO.write(bI, formatoFile, byteArrayOutput);
+                    	byte [] listaB = byteArrayOutput.toByteArray();
+                    	DataOutputStream salida = new DataOutputStream(clientSocket.getOutputStream());
+                    	salida.writeBytes("HTTP/1.1 200 OK \r\n");
+                    	salida.writeBytes("Content-Type: image/" + formatoFile + "\r\n");
+                    	salida.writeBytes("Content-Length: " + listaB.length);
+                    	salida.writeBytes("\r\n\r\n");
+                    	salida.write(listaB);
+                    	salida.close();
+            			out.println(salida.toString());
+                	}else if(inputLine.contains("/recursosWeb/")) {
+                		String path = inputLine.split(" ")[1].split("/")[2];
+                		String direccion = System.getProperty("user.dir") + "/recursosWeb/" + path;
                 		outputLine = "HTTP/1.1 200 OK\r\n"
 	                            + "Content-Type: text/html\r\n"
 	                            + "\r\n";
