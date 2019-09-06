@@ -118,7 +118,7 @@ public class AppServer {
 	}
 	
 	public void inicializar() throws IOException {
-		String sCarpAct = System.getProperty("user.dir")+"\\src\\main\\java\\apps";
+		String sCarpAct = System.getProperty("user.dir")+"/src/main/java/apps";
 		File carpeta = new File(sCarpAct);
 		String[] clases = carpeta.list();
 		hash = new HashMap<String,Handler>();
