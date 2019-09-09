@@ -16,8 +16,8 @@ public class URLHandler implements Handler{
 		try {
 			return metodo.invoke(null, args);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			e.printStackTrace();
-			return null;
+			
+			return "404 Not Found :(";
 		}		
 	}
 	
