@@ -87,10 +87,11 @@ public class AppServer {
             			out.println(salida.toString());
                 	}else if(inputLine.contains("/recursosWeb/")) {
                 		String path = inputLine.split(" ")[1].split("/")[2];
-                		String direccion = "https://primerproyectoarep.herokuapp.com" + "/recursosWeb/" + path;
+                		String direccion = System.getProperty("user.dir") + "/recursosWeb/" + path;
                 		outputLine = "HTTP/1.1 200 OK\r\n"
 	                            + "Content-Type: text/html\r\n"
 	                            + "\r\n";
+                		System.out.println("DIRECCIOOOOOOOOOON" + direccion);
                 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(direccion),"UTF8"));
                 		while (br.ready()) {
                             outputLine += br.readLine();
