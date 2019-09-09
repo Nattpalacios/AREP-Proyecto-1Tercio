@@ -73,7 +73,6 @@ public class AppServer {
                 		String path = inputLine.split(" ")[1].split("/")[2];
                 		String formatoFile = path.substring(path.indexOf(".") + 1);
                 		String direccion = System.getProperty("user.dir") + "/imagenes/" + path;
-                		System.out.println("DIRECCIOOOOOOOOOON" + direccion);
                     	BufferedImage bI = ImageIO.read(new File(direccion));
                     	ByteArrayOutputStream byteArrayOutput = new ByteArrayOutputStream();
                     	ImageIO.write(bI, formatoFile, byteArrayOutput);
@@ -92,7 +91,6 @@ public class AppServer {
                 		outputLine = "HTTP/1.1 200 OK\r\n"
 	                            + "Content-Type: text/html\r\n"
 	                            + "\r\n";
-                		System.out.println("DIRECCIOOOOOOOOOON" + direccion);
                 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(direccion),"UTF8"));
                 		while (br.ready()) {
                             outputLine += br.readLine();

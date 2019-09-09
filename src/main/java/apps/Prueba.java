@@ -13,5 +13,10 @@ public class Prueba {
 	public static String cuadrado() {
 		return "En proceso";
 	}
+	
+	@Web("/multiplicar")
+	public static double multiplicar(String a, String b) {
+		return Double.parseDouble(a) * Double.parseDouble(b);
+	}
 
 }
