@@ -18,5 +18,10 @@ public class Prueba {
 	public static double multiplicar(String a, String b) {
 		return Double.parseDouble(a) * Double.parseDouble(b);
 	}
+	
+	@Web("/sumar")
+	public static double sumar(String a, String b) {
+		return Double.parseDouble(a) + Double.parseDouble(b);
+	}
 
 }

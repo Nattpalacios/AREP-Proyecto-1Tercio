@@ -51,10 +51,16 @@ public class AppServer {
                      System.out.println("Received: " + inputLine);
                      if(inputLine.contains("GET")) {
      	                if(inputLine.contains("/apps/")) {
-     	                	String path = inputLine.split(" ")[1].split("/")[2];
-     	                	String[] a = path.split("="); 
-     	                	op = "/"+a[0];
-     	                	String[] parametros = a[1].split("&");
+     	                	String path = inputLine.split(" ")[1];
+     	                	System.err.println(path);
+     	                	String[] a = path.split("/apps/"); 
+     	                	op = "/"+a[1];
+     	                	String[] elementos = op.split("\\?value=");
+     	                	System.err.println("op:" + op);
+     	                	String[] parametros = elementos[1].split("&value=");
+     	                	for(int i = 0; i < parametros.length; i++) {
+     	                		System.err.println(parametros[i]);
+     	                	}
      	                	outputLine = "HTTP/1.1 200 OK\r\n"
      	                            + "Content-Type: text/html\r\n"
      	                            + "\r\n"
@@ -66,7 +72,7 @@ public class AppServer {
      	                            + "</head>\n"
      	                            + "<body>\n"
      	                            + "<h1>"
-     	                            + hash.get(op).ejecutar(parametros)
+     	                            + hash.get(elementos[0]).ejecutar(parametros)
      	                            +"</h1>\n"
      	                            + "</body>\n"
      	                            + "</html>\n";
@@ -89,15 +95,14 @@ public class AppServer {
                      	}else if(inputLine.contains("/recursosWeb/")) {
                      		String path = inputLine.split(" ")[1].split("/")[2];
                      		String direccion = System.getProperty("user.dir") + "/RecursosWeb/" + path;
-                     		outputLine = "HTTP/1.1 200 OK\r\n"
-     	                            + "Content-Type: text/html\r\n"
-     	                            + "\r\n";
+                     		out.println("HTTP/1.1 200 OK\r");
+     	                    out.println("Content-Type: text/html\r");
+     	                    out.println("\r\n");
                      		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(direccion),"UTF8"));
                      		while (br.ready()) {
                                  outputLine += br.readLine();
                  			}
-                     		out.print(outputLine);
-                             br.close();
+                            br.close();
                      	}
                      }
                      if (!in.ready()) {
@@ -111,6 +116,7 @@ public class AppServer {
 
                  in.close();
             }catch(Exception e) {
+            	e.printStackTrace();
             	outputLine = "HTTP/1.1 200 OK\r\n"
                          + "Content-Type: text/html\r\n"
                          + "\r\n"
