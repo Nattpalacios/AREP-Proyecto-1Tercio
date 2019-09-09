@@ -93,6 +93,9 @@ public class AppServer {
 	                            + "Content-Type: text/html\r\n"
 	                            + "\r\n";
                 		System.out.println("DIRECCIOOOOOOOOOON" + direccion);
+                		if(direccion.contains("/app/")) {
+                			direccion = direccion.substring(4);
+                		}
                 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(direccion),"UTF8"));
                 		while (br.ready()) {
                             outputLine += br.readLine();
