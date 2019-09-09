@@ -46,69 +46,93 @@ public class AppServer {
                     new InputStreamReader(clientSocket.getInputStream()));
             String inputLine, outputLine = "";
             String op = "";
-            while ((inputLine = in.readLine()) != null) {
-                System.out.println("Received: " + inputLine);
-                if(inputLine.contains("GET")) {
-	                if(inputLine.contains("/apps/")) {
-	                	String path = inputLine.split(" ")[1].split("/")[2];
-	                	String[] a = path.split("="); 
-	                	op = "/"+a[0];
-	                	String[] parametros = a[1].split("&");
-	                	outputLine = "HTTP/1.1 200 OK\r\n"
-	                            + "Content-Type: text/html\r\n"
-	                            + "\r\n"
-	                            + "<!DOCTYPE html>\n"
-	                            + "<html>\n"
-	                            + "<head>\n"
-	                            + "<meta charset=\"UTF-8\">\n"
-	                            + "<title>Title of the document</title>\n"
-	                            + "</head>\n"
-	                            + "<body>\n"
-	                            + "<h1>"
-	                            + hash.get(op).ejecutar(parametros)
-	                            +"</h1>\n"
-	                            + "</body>\n"
-	                            + "</html>\n";
-                	}else if(inputLine.contains("/imagenes/")) {
-                		String path = inputLine.split(" ")[1].split("/")[2];
-                		String formatoFile = path.substring(path.indexOf(".") + 1);
-                		String direccion = System.getProperty("user.dir") + "/imagenes/" + path;
-                    	BufferedImage bI = ImageIO.read(new File(direccion));
-                    	ByteArrayOutputStream byteArrayOutput = new ByteArrayOutputStream();
-                    	ImageIO.write(bI, formatoFile, byteArrayOutput);
-                    	byte [] listaB = byteArrayOutput.toByteArray();
-                    	DataOutputStream salida = new DataOutputStream(clientSocket.getOutputStream());
-                    	salida.writeBytes("HTTP/1.1 200 OK \r\n");
-                    	salida.writeBytes("Content-Type: image/" + formatoFile + "\r\n");
-                    	salida.writeBytes("Content-Length: " + listaB.length);
-                    	salida.writeBytes("\r\n\r\n");
-                    	salida.write(listaB);
-                    	salida.close();
-            			out.println(salida.toString());
-                	}else if(inputLine.contains("/recursosWeb/")) {
-                		String path = inputLine.split(" ")[1].split("/")[2];
-                		String direccion = System.getProperty("user.dir") + "/RecursosWeb/" + path;
-                		outputLine = "HTTP/1.1 200 OK\r\n"
-	                            + "Content-Type: text/html\r\n"
-	                            + "\r\n";
-                		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(direccion),"UTF8"));
-                		while (br.ready()) {
-                            outputLine += br.readLine();
-            			}
-                		out.print(outputLine);
-                        br.close();
-                	}
-                }
-                if (!in.ready()) {
-                    break;
-                }
+            try {
+            	 while ((inputLine = in.readLine()) != null) {
+                     System.out.println("Received: " + inputLine);
+                     if(inputLine.contains("GET")) {
+     	                if(inputLine.contains("/apps/")) {
+     	                	String path = inputLine.split(" ")[1].split("/")[2];
+     	                	String[] a = path.split("="); 
+     	                	op = "/"+a[0];
+     	                	String[] parametros = a[1].split("&");
+     	                	outputLine = "HTTP/1.1 200 OK\r\n"
+     	                            + "Content-Type: text/html\r\n"
+     	                            + "\r\n"
+     	                            + "<!DOCTYPE html>\n"
+     	                            + "<html>\n"
+     	                            + "<head>\n"
+     	                            + "<meta charset=\"UTF-8\">\n"
+     	                            + "<title>Title of the document</title>\n"
+     	                            + "</head>\n"
+     	                            + "<body>\n"
+     	                            + "<h1>"
+     	                            + hash.get(op).ejecutar(parametros)
+     	                            +"</h1>\n"
+     	                            + "</body>\n"
+     	                            + "</html>\n";
+                     	}else if(inputLine.contains("/imagenes/")) {
+                     		String path = inputLine.split(" ")[1].split("/")[2];
+                     		String formatoFile = path.substring(path.indexOf(".") + 1);
+                     		String direccion = System.getProperty("user.dir") + "/imagenes/" + path;
+                         	BufferedImage bI = ImageIO.read(new File(direccion));
+                         	ByteArrayOutputStream byteArrayOutput = new ByteArrayOutputStream();
+                         	ImageIO.write(bI, formatoFile, byteArrayOutput);
+                         	byte [] listaB = byteArrayOutput.toByteArray();
+                         	DataOutputStream salida = new DataOutputStream(clientSocket.getOutputStream());
+                         	salida.writeBytes("HTTP/1.1 200 OK \r\n");
+                         	salida.writeBytes("Content-Type: image/" + formatoFile + "\r\n");
+                         	salida.writeBytes("Content-Length: " + listaB.length);
+                         	salida.writeBytes("\r\n\r\n");
+                         	salida.write(listaB);
+                         	salida.close();
+                 			out.println(salida.toString());
+                     	}else if(inputLine.contains("/recursosWeb/")) {
+                     		String path = inputLine.split(" ")[1].split("/")[2];
+                     		String direccion = System.getProperty("user.dir") + "/RecursosWeb/" + path;
+                     		outputLine = "HTTP/1.1 200 OK\r\n"
+     	                            + "Content-Type: text/html\r\n"
+     	                            + "\r\n";
+                     		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(direccion),"UTF8"));
+                     		while (br.ready()) {
+                                 outputLine += br.readLine();
+                 			}
+                     		out.print(outputLine);
+                             br.close();
+                     	}
+                     }
+                     if (!in.ready()) {
+                         break;
+                     }
+                 }
+
+                 out.write(outputLine);
+
+                 out.close();
+
+                 in.close();
+            }catch(Exception e) {
+            	outputLine = "HTTP/1.1 200 OK\r\n"
+                         + "Content-Type: text/html\r\n"
+                         + "\r\n"
+                         + "<!DOCTYPE html>\n"
+                         + "<html>\n"
+                         + "<head>\n"
+                         + "<meta charset=\"UTF-8\">\n"
+                         + "<title>Title of the document</title>\n"
+                         + "</head>\n"
+                         + "<body>\n"
+                         + "<h1>"
+                         + "404 Not Found :("
+                         +"</h1>\n"
+                         + "</body>\n"
+                         + "</html>\n";
+            	out.write(outputLine);
+
+                out.close();
+
+                in.close();
             }
-
-            out.write(outputLine);
-
-            out.close();
-
-            in.close();
+           
 
             clientSocket.close();
 
