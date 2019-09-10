@@ -8,6 +8,10 @@ Palacios Rozo Natalia Faride
 
 ![](https://raw.githubusercontent.com/Nattpalacios/AREP-Proyecto-1Tercio/master/images/arquitectura.PNG)
 
+## Arquitectura de despliegue
+
+![](https://raw.githubusercontent.com/Nattpalacios/AREP-Proyecto-1Tercio/master/images/despliegue.PNG)
+
 ## Heroku
 
 https://primerproyectoarep.herokuapp.com/
