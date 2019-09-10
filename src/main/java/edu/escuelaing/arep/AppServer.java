@@ -61,6 +61,7 @@ public class AppServer {
      	                	for(int i = 0; i < parametros.length; i++) {
      	                		System.err.println(parametros[i]);
      	                	}
+     	                	System.err.println(hash.get(elementos[0]));
      	                	outputLine = "HTTP/1.1 200 OK\r\n"
      	                            + "Content-Type: text/html\r\n"
      	                            + "\r\n"
@@ -165,6 +166,7 @@ public class AppServer {
 			Method[] metodos = c.getDeclaredMethods();
 			for(Method m : metodos) {
 				if (m.getAnnotation(Web.class) != null) {
+					System.err.println(m.getAnnotation(Web.class).value());
 					hash.put(m.getAnnotation(Web.class).value(), new URLHandler(m));
 				}		
 			}
